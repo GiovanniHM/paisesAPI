@@ -15,8 +15,9 @@ export class PorCPaisComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  buscar() {
+  buscar(termino: string) {
     this.errorM = false;
+    this.termino = termino
     console.log(this.termino);
     this.paisService.buscarPais(this.termino).subscribe(
       (resp) => {
