@@ -19,7 +19,7 @@ export class PorCPaisComponent implements OnInit {
     this.errorM = false;
     this.termino = termino
     console.log(this.termino);
-    this.paisService.buscarPais(this.termino).subscribe(
+    this.paisService.buscarPais(this.termino, 'name').subscribe(
       (resp) => {
         console.log(resp);
         this.paises = resp;
@@ -32,5 +32,10 @@ export class PorCPaisComponent implements OnInit {
 
       }
     );
+  }
+
+
+  sugerencias(termino: string){
+    this.errorM = false;
   }
 }

@@ -1,7 +1,10 @@
 <div class="row">
+  <h2>Por País</h2>
   <div class="col">
    <app-pais-input
+   [placeH]="'Buscar país ....'"
    (onEnter)="buscar($event)"
+   (onDebunce)="sugerencias($event)"
    ></app-pais-input>
   </div>
 </div>
