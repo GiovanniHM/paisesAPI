@@ -11,6 +11,8 @@ export class PorCPaisComponent implements OnInit {
   termino: string = '';
   errorM: boolean = false;
   paises: Country[] = [];
+  paisesSugeridos: Country[] = [];
+  mostrarSugerencias: boolean = false;
   constructor(private paisService: PaisService) {}
 
   ngOnInit(): void {}
@@ -37,5 +39,19 @@ export class PorCPaisComponent implements OnInit {
 
   sugerencias(termino: string){
     this.errorM = false;
+    this.termino = termino;
+    this.mostrarSugerencias = true
+
+    this.paisService.buscarPais(termino, 'name')
+    .subscribe(paises => this.paisesSugeridos = paises.splice(0,5),
+    (error) =>this.paisesSugeridos = [])
+
+    this.termino = termino;
   }
+
+  buscarSugerido(termino: string){
+    this.buscar(termino);
+    this.termino = '';
+  }
+
 }
